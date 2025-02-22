@@ -44,14 +44,14 @@ A web-based e-commerce application for efficient product and category management
 ### **1. Clone the Repository**
 
 ```sh
-git clone https://github.com/your-repo/ecommerce-app.git
-cd ecommerce-app
+git clone https://github.com/Shubham-csed/Invento.git
+cd Invento
 ```
 
 ### **2. Backend Setup (Spring Boot)**
 
 ```sh
-cd backend
+cd Backend
 mvn clean install
 mvn spring-boot:run
 ```
@@ -61,7 +61,7 @@ mvn spring-boot:run
 ### **3. Frontend Setup (Angular)**
 
 ```sh
-cd frontend
+cd Frontend_Angular
 npm install
 ng serve
 ```
