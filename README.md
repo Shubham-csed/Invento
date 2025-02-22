@@ -3,6 +3,7 @@
 ## Overview
 
 Invento: E-Commerce Inventory & Category Management
+
 A web-based e-commerce application for efficient product and category management. Built with Angular (frontend), Spring Boot (backend), and PostgreSQL (database), it enables users to add, update, delete, and categorize products, as well as filter and view products by category for an optimized browsing experience.
 
 ## Features
