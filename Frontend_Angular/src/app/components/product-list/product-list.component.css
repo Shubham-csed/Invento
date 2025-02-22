@@ -1,0 +1,63 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.product-card {
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: scale(1.03);
+}
+
+.product-image {
+    width: 100%;
+    /* Ensure image takes full width */
+    height: auto;
+    /* Adjust height based on image aspect ratio */
+    max-height: 250px;
+    /* Limit max height to maintain uniformity */
+    object-fit: contain;
+    /* Show full image without cropping */
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: #f8f9fa;
+    /* Add a background color for better appearance */
+    padding: 10px;
+    /* Add padding to avoid tight image fit */
+}
+
+.card-body {
+    text-align: center;
+    padding: 15px;
+}
+
+.price {
+    font-size: 1.2rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger:hover {
+    background-color: #b30000;
+}

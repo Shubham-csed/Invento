@@ -1,0 +1,64 @@
+<div class="container form-container">
+    <h2 class="text-center">{{ isEditMode ? 'Edit Product' : 'Add Product' }}</h2>
+    <form (ngSubmit)="saveProduct()" #productForm="ngForm">
+
+        <div class="image-preview-container">
+            <label>Image Preview:</label><br>
+            <img [src]="product.imageUrl || 'assets/no-image.png'" alt="Product Image" class="image-preview">
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Product Image URL</label>
+            <input type="text" id="imageUrl" class="form-control" [(ngModel)]="product.imageUrl" name="imageUrl"
+                (input)="checkFormValidity()">
+        </div>
+
+
+        <div class="form-group">
+            <label for="name">Product Name</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="product.name" name="name" required
+                (input)="checkFormValidity()">
+            <small *ngIf="!product.name" class="text-danger">Product name is required.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea id="description" class="form-control" [(ngModel)]="product.description" name="description"
+                required (input)="checkFormValidity()"></textarea>
+            <small *ngIf="!product.description" class="text-danger">Description is required.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <div class="input-group">
+                <span class="input-group-text">₹</span>
+                <input type="number" id="price" class="form-control" [(ngModel)]="product.price" name="price" required
+                    (input)="checkFormValidity()">
+            </div>
+            <small *ngIf="product.price <= 0" class="text-danger">Price must be greater than 0.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input type="number" id="quantity" class="form-control" [(ngModel)]="product.quantity" name="quantity"
+                required (input)="checkFormValidity()">
+            <small *ngIf="product.quantity < 0" class="text-danger">Quantity cannot be negative.</small>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" class="form-control" [(ngModel)]="product.categoryId" name="category" required
+                (change)="checkFormValidity()">
+                <option value="" disabled>Select a category</option>
+                <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+            </select>
+            <small *ngIf="!product.categoryId" class="text-danger">Please select a category.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3" [disabled]="!formValid">
+            {{ isEditMode ? 'Update Product' : 'Add Product' }}
+        </button>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+<div class="container mt-4">
+    <h2 class="text-center">Categories</h2>
+
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="newCategoryName" placeholder="Enter category name" />
+        <button class="btn btn-success" (click)="addCategory()">Add Category</button>
+    </div>
+
+    <table class="table table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <!--   <th>ID</th> -->
+                <th>Category Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of categories">
+                <!--   <td>{{ category.id }}</td> -->
+                <td>{{ category.name }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteCategory(category.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

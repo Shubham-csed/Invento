@@ -1,0 +1,46 @@
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Product List</h2>
+
+    <!-- Add New Product Button -->
+    <div class="d-flex justify-content-between mb-4">
+        <button class="btn btn-success" [routerLink]="['/add']">➕ Add New Product</button>
+    </div>
+
+    <!-- Category Filter Dropdown -->
+    <div class="form-group mb-4">
+        <label for="categoryFilter"><strong>Filter by Category:</strong></label>
+        <select id="categoryFilter" class="form-control" [(ngModel)]="selectedCategoryId" (change)="filterProducts()">
+            <option [value]="0">All Categories</option>
+            <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+        </select>
+    </div>
+
+    <div *ngIf="filteredProducts.length > 0; else noProducts">
+        <div class="row">
+            <div class="col-md-4 mb-4" *ngFor="let product of filteredProducts">
+                <div class="card product-card">
+                    <img *ngIf="product.imageUrl" [src]="product.imageUrl" class="card-img-top product-image"
+                        alt="{{ product.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <p class="card-text price"><strong>Price:</strong> {{ product.price | currency:'INR':'symbol' }}
+                        </p>
+                        <p class="card-text"><strong>Quantity:</strong> {{ product.quantity }}</p>
+                        <p class="card-text"><strong>Category:</strong> {{ getCategoryName(product.categoryId) }}</p>
+
+
+                        <div class="button-group">
+                            <button class="btn btn-primary" [routerLink]="['/edit', product.id]">✏️ Edit</button>
+                            <button class="btn btn-danger ml-2" (click)="deleteProduct(product.id!)">🗑️ Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noProducts>
+        <p class="text-center text-danger mt-3">No products found for the selected category.</p>
+    </ng-template>
+</div>
